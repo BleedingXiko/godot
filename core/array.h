@@ -73,6 +73,7 @@ public:
 
 	Variant front() const;
 	Variant back() const;
+	Variant pick_random() const;
 
 	Array &sort();
 	Array &sort_custom(Object *p_obj, const StringName &p_function);

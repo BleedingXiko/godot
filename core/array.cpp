@@ -32,6 +32,7 @@
 
 #include "core/hashfuncs.h"
 #include "core/object.h"
+#include "core/math/math_funcs.h"
 #include "core/variant.h"
 #include "core/vector.h"
 
@@ -159,6 +160,11 @@ Variant Array::front() const {
 Variant Array::back() const {
 	ERR_FAIL_COND_V_MSG(_p->array.size() == 0, Variant(), "Can't take value from empty array.");
 	return operator[](_p->array.size() - 1);
+}
+
+Variant Array::pick_random() const {
+	ERR_FAIL_COND_V_MSG(_p->array.size() == 0, Variant(), "Can't take value from empty array.");
+	return operator[](Math::rand() % _p->array.size());
 }
 
 int Array::find(const Variant &p_value, int p_from) const {
