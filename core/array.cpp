@@ -34,6 +34,7 @@
 #include "core/object.h"
 #include "core/variant.h"
 #include "core/vector.h"
+#include "core/math/math_funcs.h"
 
 class ArrayPrivate {
 public:
@@ -338,6 +339,10 @@ void Array::shuffle() {
 		data[j] = data[i];
 		data[i] = tmp;
 	}
+}
+Variant Array::pick_random() const {
+	ERR_FAIL_COND_V_MSG(_p->array.size() == 0, Variant(), "Can't take value from empty array.");
+	return operator[](Math::rand() % _p->array.size());
 }
 
 template <typename Less>
